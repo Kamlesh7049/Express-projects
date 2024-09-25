@@ -1,15 +1,12 @@
 const express=require("express");
 const route=express.Router();
 
-route.get("/",(req,res)=>{
-    res.send("<h1>Teacher Home page!!</h1>")
+route.get("/teacherinfo",(req,res)=>{
+    res.send("<h1>Teacher information!!</h1>")
 })
-
-
 route.get("/teachersub",(req,res)=>{
-    res.send("<h1>studen Information!!</h1>")
+    res.send("<h1>Teacher Information!!</h1>")
 })
-
 
 route.get("/teachersal",(req,res)=>{
     res.send("<h1>Teacher salary!!</h1>")

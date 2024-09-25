@@ -4,13 +4,9 @@ const route=express.Router();
 route.get("/",(req,res)=>{
     res.send("<h1>student Home page!!</h1>")
 })
-
-
 route.get("/stuinfo",(req,res)=>{
     res.send("<h1>student Information!!</h1>")
 })
-
-
 route.get("/stufess",(req,res)=>{
     res.send("<h1>student fess!!</h1>")
 })
