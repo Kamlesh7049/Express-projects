@@ -1,21 +1,11 @@
-const express=require("express");
-const route=express.Router();
+const express = require("express");
+const route = express.Router();
+const StuController = require("../controllers/studentController");
 
-route.get("/",(req,res)=>{
-    res.send("<h1>student Home page!!</h1>")
-})
-route.get("/stuinfo",(req,res)=>{
-    res.send("<h1>student Information!!</h1>")
-})
-route.get("/stufess",(req,res)=>{
-    res.send("<h1>student fess!!</h1>")
-})
+// Define routes
+route.get("/stuinfo", StuController.stuInfo);      // For student info
+route.get("/stufees", StuController.stuFees);      // Corrected stuFess to stuFees
+route.get("/sturesult", StuController.stuResult);  // For student result
+route.get("/stusubject", StuController.stuSubject); // Changed the duplicate path to 'stusubject' for subjects
 
-route.get("/stuclass",(req,res)=>{
-    res.send("<h1>student class!!</h1>")
-})
-
-route.get("/sturesult",(req,res)=>{
-    res.send("<h1>student result!!</h1>")
-})
-module.exports=route;
+module.exports = route;
