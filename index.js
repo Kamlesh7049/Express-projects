@@ -1,20 +1,15 @@
 const express = require("express");
-const app = express();
-const PORT = 8000;
+const app= express();
+const mongoose= require("mongoose");
+const StuRoute=require("./routes/studentRoutes");
+// mongoose.connect("mongodb://127.0.0.1:27017/Kamlesh").then()
+mongoose.connect("mongodb://127.0.0.1:27017/Kamlesh", { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("MongoDB connected"))
+    .catch((err) => console.log(err));
 
-// Import the student routes
-const StuRoute = require("./routes/studentRoutes");  // Ensure the correct file is imported
 
-// Use the student routes under '/students' path
-app.use("/students", StuRoute);
+app.use("/students",StuRoute);
 
-// Home page route
-app.get("/", (req, res) => {
-    res.send("This is my home page!!");
-});
-
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server running on port: ${PORT}`);
-});
-    
+app.listen(8000,()=>{
+    console.log("Server run on 8000!")
+})
