@@ -1,7 +1,11 @@
-const express=require("express");
-const route =express.Router();
-const StuController=require("../controllers/studentController");
+const express = require("express");
+const route = express.Router();
+const StuController = require("../controllers/studentController");
 
-route.get("/stuinfo",StuController.stuInformation);
+// Route to get student information
+route.get("/stuinfo", StuController.stuInformation);
 
-module.exports=route;
+// Route to save student data (should use POST)
+route.post("/datasave", StuController.studataSave);
+
+module.exports = route;
