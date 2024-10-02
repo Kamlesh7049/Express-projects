@@ -8,6 +8,7 @@
 // module.exports=mongoose.model("student",stuSchema);
 
 
+// database
 
 
 const mongoose=require("mongoose")

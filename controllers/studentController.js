@@ -32,15 +32,17 @@
 // };
 
 
+// set of fn
+// schema-strucure
 
-
-const StuModel = require("../models/studentModel")
+const StuModel = require("../models/studentModel")//insert upade delete
 
 const stuInformation = (req, res) => {
     res.send("This is Student Home Pages!!")
 }
 
 const studataSave = (req, res) => {
+    
     const { rollno,name,city,fees}=req.body;
 
     const student=new StuModel({
@@ -50,6 +52,7 @@ const studataSave = (req, res) => {
        fees:fees
     })
     student.save();
+    
     res.send("Data succesfully Save!!");
 
 }
@@ -58,9 +61,18 @@ const studentDisplay=async(req,res)=>{
  res.send(studata);
 //  res.send("Heeeeee");
 }
+const studentSearch=async(req,res)=>{
+    const{rollno}=req.body;
+    const studata=await StuModel.find({"rollno":rollno});
+    console.log(studata);
+    res.send(studata);
+    
+}
+// console.log(req.body);
 module.exports = {
     stuInformation,
     studataSave,
-    studentDisplay
+    studentDisplay,
+    studentSearch
 
 }

@@ -23,13 +23,13 @@
 
 
 
-
+// one pakage mongoose
 
 const express =require("express")
 const app=express();
 const mongoose=require("mongoose")
 const StuRoute=require("./routes/studentRoutes");
-const bodyParser = require("body-parser");
+const bodyParser = require("body-parser"); //  body parser convert karna
 
 mongoose.connect("mongodb://127.0.0.1:27017/Mydata").then(()=>{
     console.log("Data Succesfully connected")
