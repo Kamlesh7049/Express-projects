@@ -21,9 +21,12 @@
 //     console.log("Server run on 8000!")
 // })
 
-
+// -------------------------------------------------------------
 
 // one pakage mongoose
+
+
+// --------------------------------------------------
 
 const express =require("express")
 const app=express();
@@ -43,3 +46,32 @@ app.use("/students",StuRoute)
 app.listen(9000,()=>{
     console.log("Server is running on 9000")
 })
+
+// ------------------------------------------------------------
+// const express=require("express");
+// const app=express();
+// app.use("/",(req,res,next)=>{
+//     console.log("this midile Ware always run")
+//     next()
+// })
+// app.get("/home",(req,res,next)=>{
+// console.log("Home Console!")
+// res.send ("Home Page")  
+// next();
+// })
+
+// app.get("/about",(req,res)=>{
+//     console.log("About Page")
+//     res.send("Hello About Page")
+// })
+// app.use("/",(req,res,next)=>{
+//     console.log("Mide Ware1");
+//     next();
+// })
+// app.use("/",(req,res)=>{
+//     console.log("Middle ware 2!  ")
+// })
+
+// app.listen(8000,()=>{
+//     console.log("server run on 8000!!!!")
+// })

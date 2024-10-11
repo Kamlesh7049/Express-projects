@@ -31,48 +31,63 @@
 //     studataSave
 // };
 
-
 // set of fn
 // schema-strucure
 
-const StuModel = require("../models/studentModel")//insert upade delete
+const StuModel = require("../models/studentModel");
 
 const stuInformation = (req, res) => {
-    res.send("This is Student Home Pages!!")
-}
+  res.send("This is Student Home Pages!!");
+};
 
 const studataSave = (req, res) => {
-    
-    const { rollno,name,city,fees}=req.body;
+  const { rollno, name, city, fees } = req.body;
 
-    const student=new StuModel({
-       rollno:rollno,
-       name:name,
-       city:city,
-       fees:fees
-    })
-    student.save();
-    
-    res.send("Data succesfully Save!!");
+  const student = new StuModel({
+    rollno: rollno,
+    name: name,
+    city: city,
+    fees: fees,
+  });
+  student.save();
 
+  res.send("Data succesfully Save!!");
+};
+const studentDisplay = async (req, res) => {
+  const studata = await StuModel.find();
+  res.send(studata);
+  //  res.send("Heeeeee");
+};
+const studentSearch = async (req, res) => {
+  const { rollno } = req.body;
+  const studata = await StuModel.find({ rollno: rollno });
+  console.log(studata);
+  res.send(studata);
+};
+const studentSearchByQuery = async (req, res) => {
+  const { name, city } = req.query;
+  const Data = await StuModel.find({ $and: [{ name: name }, { city: city }] });
+  // console.log(data);
+  res.send(Data);
+};
+const studentSaveCreate=async(req,res)=>{
+  const {rollno,name,city,fees}=req.body;
+  const Mydata=StuModel.create({
+    rollno: rollno,
+    name: name,
+    city: city,
+    fees: fees
+
+  })
+  res.send("Data save by create")
 }
-const studentDisplay=async(req,res)=>{
- const studata=await StuModel.find();
- res.send(studata);
-//  res.send("Heeeeee");
-}
-const studentSearch=async(req,res)=>{
-    const{rollno}=req.body;
-    const studata=await StuModel.find({"rollno":rollno});
-    console.log(studata);
-    res.send(studata);
-    
-}
+
 // console.log(req.body);
 module.exports = {
-    stuInformation,
-    studataSave,
-    studentDisplay,
-    studentSearch
-
-}
+  stuInformation,
+  studataSave,
+  studentDisplay,
+  studentSearch,
+  studentSearchByQuery,
+  studentSaveCreate
+};
